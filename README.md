@@ -1,12 +1,13 @@
-![shot](https://github.com/IndieKKY/ai-text-assistant-utools/assets/121992849/f4ebffcf-e7d1-4792-9fca-66e0bfc113a5)
-
 ## 简介 📝
 
-这是AI通用文字辅助utools插件，功能参考NotionAI与RaycastAI。
+TextAI 2 是基于AI能力的通用文本生成utools插件。
 
-目前使用的大语言模型(LLM)为OpenAI(与ChatGPT语言模型相同)。
+基于已停止维护的[TextAI](https://github.com/IndieKKY/ai-text-assistant-utools)
+
+支持自定义 OpenAI API 格式的任意 API。
 
 ## 功能特点 👋
+
 1. 支持5大类生成模板
 2. 支持多语言
 3. 支持创造性参数调节(Temperature)
@@ -15,30 +16,33 @@
 6. 支持多个第三方代理
 7. 支持深色主题
 
+### 二次开发新增功能
+
+1. 支持自定义 AI 模型
+
 ## 下载安装 💾
+
 1. 安装 [uTools](https://u.tools/)
-2. 插件应用市场搜索: `TextAI`
+2. 插件应用市场搜索: `TextAI 2`
 
 ## 使用方法 📚
+
 1. 方法一（推荐）：任意应用内复制文本后，按鼠标中键呼出超级面板，然后选择此插件。
 2. 方法二：任意应用内复制文本后，按Ctrl+Space呼出uTools，然后选择此插件。
 3. 方法三：先进入此插件，然后在里面直接粘贴内容使用。
 
 ## 交流联系 💬
 
-QQ群：194536885
+[Github仓库](https://github.com/JoeyLearnsToCode/ai-text-assistant-utools)
 
-微信公众号：IndieKKY
-
-twitter：[https://twitter.com/IndieKky](https://twitter.com/IndieKky)
-
-github: [IndieKKY](https://github.com/IndieKKY)
+基于已停止维护的[TextAI](https://github.com/IndieKKY/ai-text-assistant-utools)
 
 ## 问题反馈 📢
 
-如果您在使用过程中遇到任何问题，或者有任何改进建议，请在项目的 **Issue 页面** 中提出。我们欢迎您的反馈，并会尽快回复和处理相关问题。
+如果你在使用过程中遇到任何问题，或者有任何改进建议，可提 Issue。**但我不一定有时间修复**，项目代码不难，欢迎你贡献优化、bugfix代码。
 
 ## 本地开发 💻
+
 前置需求：
 
 1. 下载uTools

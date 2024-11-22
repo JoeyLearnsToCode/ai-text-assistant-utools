@@ -4,6 +4,7 @@ import {PAGE_MAIN} from '../const'
 export interface EnvData {
   serverUrl?: string
   apiKey?: string
+  apiModel?: string
   temperature?: number
   language?: string
   prompt?: string

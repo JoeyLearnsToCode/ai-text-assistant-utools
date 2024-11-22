@@ -44,6 +44,7 @@ const Settings = () => {
 
   const [apiKeyValue, {onChange: onChangeApiKeyValue}] = useEventTarget({initialValue: envData.apiKey ?? ''})
   const [serverUrlValue, setServerUrlValue] = useState(envData.serverUrl)
+  const [apiModelValue, {onChange: onChangeApiModelValue}] = useEventTarget({ initialValue: envData.apiModel ?? '' })
   const [moreFold, {toggle: toggleMoreFold}] = useBoolean(true)
   const [moreFold2, {toggle: toggleMoreFold2}] = useBoolean(true)
   const [promptValue, setPromptValue] = useState(envData.prompt ?? PROMPT_DEFAULT)
@@ -52,6 +53,7 @@ const Settings = () => {
     dispatch(setEnvData({
       apiKey: apiKeyValue,
       serverUrl: serverUrlValue,
+      apiModel: apiModelValue,
       prompt: promptValue,
     }))
     dispatch(setPage(PAGE_MAIN))
@@ -61,7 +63,7 @@ const Settings = () => {
       v_set_url: !!serverUrlValue+'',
       v_set_api_key: !!apiKeyValue+'',
     })
-  }, [apiKeyValue, dispatch, promptValue, serverUrlValue])
+  }, [apiKeyValue, dispatch, promptValue, serverUrlValue, apiModelValue])
 
   const onCancel = useCallback(() => {
     dispatch(setPage(PAGE_MAIN))
@@ -114,6 +116,10 @@ const Settings = () => {
       <FormItem title='API KEY*' htmlFor='apiKey'>
         <input id='apiKey' type='text' className='input input-sm input-bordered w-full' placeholder='sk-xxx'
                value={apiKeyValue} onChange={onChangeApiKeyValue}/>
+      </FormItem>
+      <FormItem title='API Model' htmlFor='apiModel'>
+        <input id='apiModel' type='text' className='input input-sm input-bordered w-full' placeholder='gpt-4o-mini'
+          value={apiModelValue} onChange={onChangeApiModelValue} />
       </FormItem>
       <FormItem title={<div>
         <div>自定义提示词</div>

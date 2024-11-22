@@ -41,31 +41,31 @@ const getSessionId = () => {
 }
 
 export const track = (eventName: string, params?: {[key: string]: string}, isDebug?: boolean) => {
-  const user = window.utools?window.utools.getUser():{nickname: '$undefined'}
+  // const user = window.utools?window.utools.getUser():{nickname: '$undefined'}
 
-  fetch(`https://op.kongkongye.com/${isDebug?'dcollect':'collect'}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      client_id: getClientId(),
-      user_id: user?.nickname??'$undefined',
-      timestamp_micros: Date.now()*1000,
-      non_personalized_ads: false,
-      validationBehavior: isDebug?'ENFORCE_RECOMMENDATIONS':undefined,
-      events: [{
-        name: eventName,
-        params: {
-          engagement_time_msec: '100',
-          session_id: getSessionId(),
+  // fetch(`https://op.kongkongye.com/${isDebug?'dcollect':'collect'}`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     client_id: getClientId(),
+  //     user_id: user?.nickname??'$undefined',
+  //     timestamp_micros: Date.now()*1000,
+  //     non_personalized_ads: false,
+  //     validationBehavior: isDebug?'ENFORCE_RECOMMENDATIONS':undefined,
+  //     events: [{
+  //       name: eventName,
+  //       params: {
+  //         engagement_time_msec: '100',
+  //         session_id: getSessionId(),
 
-          c_channel: 'utools', // 渠道
-          c_env: import.meta.env.MODE, // 环境
+  //         c_channel: 'utools', // 渠道
+  //         c_env: import.meta.env.MODE, // 环境
 
-          ...(params??{}),
-        }
-      }],
-    }),
-  }).catch(console.error)
+  //         ...(params??{}),
+  //       }
+  //     }],
+  //   }),
+  // }).catch(console.error)
 }

@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build_utools": "tsc && vite build -m production_utools && pnpm run update-version",
+    "build_utools": "tsc && vite build -m production_utools",
     "preview": "vite preview",
     "fix": "eslint --fix --quiet .",
     "update-version": "mkdir -p dist && echo `date +%s` > dist/version.txt"

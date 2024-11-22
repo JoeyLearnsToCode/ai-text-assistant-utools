@@ -52,7 +52,7 @@ const useOpenai = () => {
         Authorization: `Bearer ${envData.apiKey??''}`,
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: envData.apiModel??'gpt-4o-mini',
         temperature: temperature??1.0,
         messages: [
           {
@@ -65,7 +65,7 @@ const useOpenai = () => {
     })
     const data = await resp.json()
     return data.choices?.[0]?.message?.content?.trim()
-  }, [envData.apiKey, envData.serverUrl, temperature])
+  }, [envData.apiKey, envData.serverUrl, envData.apiModel, temperature])
 
   const sendRequestStream = useCallback(async (prompt: string, ctrl: AbortController) => {
     console.log('sendRequestStream:', prompt)
@@ -76,7 +76,7 @@ const useOpenai = () => {
         Authorization: `Bearer ${envData.apiKey??''}`,
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: envData.apiModel??'gpt-4o-mini',
         stream: true,
         temperature: temperature??1.0,
         messages: [
@@ -135,7 +135,7 @@ const useOpenai = () => {
         throw err
       },
     })
-  }, [dispatch, envData.apiKey, envData.serverUrl, temperature])
+  }, [dispatch, envData.apiKey, envData.serverUrl, envData.apiModel, temperature])
 
   return {convertParams, navResult, sendRequest, sendRequestStream}
 }
