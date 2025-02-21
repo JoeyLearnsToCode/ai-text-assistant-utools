@@ -1,4 +1,5 @@
-import {LANGUAGES, TONES} from './const'
+import { LANGUAGES, TONES } from './const'
+import { EnvData } from './redux/envReducer'
 
 const templateSimple = (role: string, command: string) => {
   return `${role}. ${command} in language '{{language}}': '''{{text}}'''`
@@ -38,7 +39,8 @@ const getTones = () => {
   })
 }
 
-export const flows: HelpFlow[] = [
+export const flows: HelpFlow[] = []
+export const defaultFlows: HelpFlow[] = [
   {
     types: [
       {
@@ -165,3 +167,56 @@ export const flows: HelpFlow[] = [
     ]
   },
 ]
+
+export const extraHelpTypes: { [key: string]: HelpType } = {
+}
+
+export const refreshFlows = () => {
+  const tmpFlows: HelpFlow[] = []
+  for (const flow of defaultFlows) {
+    tmpFlows.push({
+      types: flow.types.map(type => {
+        return {
+          name: type.name,
+          items: type.items.map(item => {
+            return {
+              ...item
+            }
+          })
+        }
+      })
+    })
+  }
+
+  for (const [name, helpType] of Object.entries(extraHelpTypes)) {
+    for (const tmpFlow of tmpFlows) {
+      const foundType = tmpFlow.types.find(type2 => type2.name === name)
+      if (foundType) {
+        foundType.items.push(...helpType.items)
+      }
+    }
+  }
+
+  flows.splice(0, flows.length)
+  flows.push(...tmpFlows)
+}
+
+export const loadHelpItemsFromEnvData = (envData: EnvData) => {
+  if (!envData.helpItemsMap) {
+    return;
+  }
+
+  // turn envData.helpItemsMap into extraHelpTypes
+  for (const [helpTypeName, helpItemFormDataMap] of Object.entries(envData.helpItemsMap)) {
+    extraHelpTypes[helpTypeName] = { name: helpTypeName, items: [] };
+    for (const helpItemFormData of Object.values(helpItemFormDataMap)) {
+      extraHelpTypes[helpTypeName].items.push({
+        code: helpItemFormData.code,
+        name: helpItemFormData.name,
+        featureName: helpItemFormData.name,
+        prompt: templateLong(helpItemFormData.role, helpItemFormData.instruct),
+        customized: true,
+      });
+    }
+  }
+};

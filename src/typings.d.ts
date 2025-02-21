@@ -30,7 +30,16 @@ interface HelpItem {
   featureName?: string
   prompt?: string
   children?: HelpItem[]
+  customized?: boolean
 }
+
+type HelpItemFormData = {
+  helpType: string;
+  code: string;
+  name: string;
+  role: string;
+  instruct: string;
+};
 
 type ShowElement = string | JSX.Element | undefined
 

@@ -81,36 +81,12 @@ const Settings = () => {
       </div>
       {!moreFold && <div className='p-2'>
         <ul className='pl-3 list-decimal desc text-xs'>
-          <li>官方服务器需要科学上网才能访问</li>
-          <li>官方网址：<a className='link' href='https://platform.openai.com/' target='_blank'
+          <li>OpenAI 官方网址：<a className='link' href='https://platform.openai.com/' target='_blank'
                           rel="noreferrer" onClick={() => openUrl('https://platform.openai.com/')}>openai.com</a> | <a className='link'
                                                                onClick={() => setServerUrlValue(SERVER_URL_DEFAULT)}
                                                                rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://api2d.com/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://api2d.com/')}>api2d</a> | <a className='link'
-                                                                      onClick={() => setServerUrlValue('https://openai.api2d.net')}
-                                                                      rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://openaimax.com/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://openaimax.com/')}>OpenAI-Max</a> | <a className='link'
-                                                                           onClick={() => setServerUrlValue('https://api.openaimax.com')}
-                                                                           rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://openai-sb.com/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://openai-sb.com/')}>OpenAI-SB</a> | <a className='link'
-                                                                          onClick={() => setServerUrlValue('https://api.openai-sb.com')}
-                                                                          rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://www.ohmygpt.com/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://www.ohmygpt.com/')}>OhMyGPT</a> | <a className='link'
-                                                                        onClick={() => setServerUrlValue('https://api.ohmygpt.com')}
-                                                                        rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://aiproxy.io/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://aiproxy.io/')}>AIProxy</a> | <a className='link'
-                                                                        onClick={() => setServerUrlValue('https://api.aiproxy.io')}
-                                                                        rel='noreferrer'>点击设置</a></li>
-          <li>支持代理(配合ApiKey)：<a className='link' href='https://key-rental.bowen.cool/' target='_blank'
-                                      rel="noreferrer" onClick={() => openUrl('https://key-rental.bowen.cool/')}>Key Rental</a> | <a className='link'
-                                                                           onClick={() => setServerUrlValue('https://key-rental-api.bowen.cool/openai')}
-                                                                           rel='noreferrer'>点击设置</a></li>
-          <li>支持其他第三方代理，有问题可加群交流</li>
+          <li>如果你有三方、中转的 OpenAI API 格式的 API，也可以在这里填写后使用。</li>
+          <li>很多 AI 厂商的 API 都使用、兼容 OpenAI API 的格式</li>
         </ul>
       </div>}
       <FormItem title='API KEY*' htmlFor='apiKey'>
@@ -146,11 +122,11 @@ const Settings = () => {
       </div>}
     </Section>
     <Section title={<div className='flex flex-col'>
-      uTools功能配置
+      快捷指令配置（即时生效，慎重删除）
     </div>}>
       <div className='pt-3'>
         <Templates type='settings'/>
-        <div className='text-xs desc pl-3 italic'>注：功能配置即时生效</div>
+        {/* <div className='text-xs desc pl-3 italic'>注：功能配置即时生效</div> */}
       </div>
     </Section>
     <div className='flex flex-col items-center gap-1'>

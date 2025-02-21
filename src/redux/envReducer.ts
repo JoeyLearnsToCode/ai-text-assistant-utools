@@ -10,6 +10,12 @@ export interface EnvData {
   prompt?: string
   theme?: string
   stream?: boolean
+
+  helpItemsMap?: {
+    [key: string]: { // key: helpType
+      [key: string]: HelpItemFormData // key: HelpItemFormData.code
+    }
+  }
 }
 
 interface EnvState {
