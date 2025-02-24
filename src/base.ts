@@ -206,6 +206,10 @@ export const loadHelpItemsFromEnvData = (envData: EnvData) => {
     return;
   }
 
+  // clean up extraHelpTypes before loading from envData
+  for (const key of Object.keys(extraHelpTypes)) {
+    delete extraHelpTypes[key];
+  }
   // turn envData.helpItemsMap into extraHelpTypes
   for (const [helpTypeName, helpItemFormDataMap] of Object.entries(envData.helpItemsMap)) {
     extraHelpTypes[helpTypeName] = { name: helpTypeName, items: [] };

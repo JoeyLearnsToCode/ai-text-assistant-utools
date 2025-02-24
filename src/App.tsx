@@ -17,7 +17,6 @@ import Result from './components/Result'
 import useKeyService from './hooks/useKeyService'
 import { useLocalStorage } from '@kky002/kky-hooks'
 import Contact from './components/Contact'
-import { refreshFlows, loadHelpItemsFromEnvData } from './base'
 
 export const EventBusContext = React.createContext<any>(null)
 
@@ -57,9 +56,6 @@ function App() {
     //   setEditBookmarkBookmark(e.bookmark)
     // }
   })
-
-  loadHelpItemsFromEnvData(envData)
-  refreshFlows()
 
   return (
     <EventBusContext.Provider value={eventBus$}>

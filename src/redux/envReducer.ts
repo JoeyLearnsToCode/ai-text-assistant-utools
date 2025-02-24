@@ -12,8 +12,8 @@ export interface EnvData {
   stream?: boolean
 
   helpItemsMap?: {
-    [key: string]: { // key: helpType
-      [key: string]: HelpItemFormData // key: HelpItemFormData.code
+    [helpType: string]: { // key: helpType
+      [itemCode: string]: HelpItemFormData // key: HelpItemFormData.code
     }
   }
 }
